@@ -1,7 +1,7 @@
 const { values, showName, doAddition } = require('./assess1');
 values.forEach(element => {
     variable=element
-    console.log("variable has value "+variable+" and type "+typeof element)
+    console.log("variable has value "+variable+" and type "+typeof variable)
 });
 
 showName("Bryan","Rodriguez", 1000)

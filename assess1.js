@@ -5,7 +5,7 @@ let values = ["Robert", .0266, false, {myname : "Test Me"}, 25166665, undefined,
 var variable
 values.forEach(element => {
     variable=element
-    console.log("variable has value "+variable+" and type "+typeof element)
+    console.log("variable has value "+variable+" and type "+typeof variable)
 });
 // 3
 function showName(firstname, lastname, age){
