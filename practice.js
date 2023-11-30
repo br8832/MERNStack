@@ -1,6 +1,6 @@
 //1 Example of bind function on browser, we must be able to change the object on click
 // <button class="favorite styled" type="button">Add to favorites</button> the buttton being referred to
-function bindExample(){alert(`this is ${JSON.stringify(this)}`)}
+function bindExample(){alert(`this is ${JSON.stringify(this)} and name is ${this.Name}`)}
 let button=document.getElementsByClassName("favorite styled")[0]
 button.addEventListener('click', bindExample.bind(UserDetail))
 button.addEventListener('click', bindExample.bind(UserAddress))
