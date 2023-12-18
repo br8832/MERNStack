@@ -14,4 +14,4 @@ function Student(name, studentid){
     return closure
 }
 
-module.exports={Student}
+export default Student;

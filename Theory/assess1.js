@@ -28,7 +28,7 @@ console.log(doAddition("first",2,"three"))
 js then changes the 2 from an int to a string i.e "2"
 */
 // 5
-module.exports = {values,showName,doAddition}
+
 // see exporting file
 // 6
 function Outer(param1, param2){
@@ -66,3 +66,4 @@ so it will print 4, undefined 4 times since there is no 4th index for the array
 Note: replacing var with let would give the expected behavior of each index with its corresponding value
 gets printed
 */
+export default {doAddition, values, showName};

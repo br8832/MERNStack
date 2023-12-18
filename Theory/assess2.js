@@ -84,11 +84,9 @@ setTimeout(()=>console.log('Fourth'),1000)
 console.log('Second')
 //10
 function ten(hobbies=['Swimming','Eating']){
-    let name='Bryan',
-    job='Learner',
-    address='Earth'
+    let [name,job,address] = ['Bryan','Learner', 'Earth']
     let thing={name:name, job:job, address:address}
-    console.log(`${name} has job ${job} lives on ${address} and has hobbies:${hobbies.join(', ')}`)
+    console.log(`${thing.name} has job ${thing.job} lives on ${thing.address} and ${hobbies.length==1?'is':'has'} hobbies:${hobbies.join(', ')}`)
 }
 ten()
 ten(['Sleeping'])

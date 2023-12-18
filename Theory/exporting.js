@@ -1,6 +1,7 @@
-const { values, showName, doAddition } = require('./assess1');
+import stuff from "./assess1.js"
+const {values, showName, doAddition} =stuff
 values.forEach(element => {
-    variable=element
+    var variable=element
     console.log("variable has value "+variable+" and type "+typeof variable)
 });
 
