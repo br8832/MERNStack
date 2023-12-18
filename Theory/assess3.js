@@ -23,15 +23,16 @@ run npm init and follow instructions, so change the default index.js to server.j
 */
 
 const express = require('express')
-const getStudentDetails=express()
-getStudentDetails.get('/',(req,res)=>{
-    let qs = req.query // is JSON I think?
-    let writer = fs.createWriteStream('query.json')
-    writer.write(qs)
-    writer.close()
-    console.log(qs)
-    res.send(`${qs.vaccineName} ${qs.price} ${qs.doses}`)
-    
+const getStudentDetails = express()
+getStudentDetails.get('/student',(req,res)=>{
+  let qs = req.query // is JSON I think?
+  console.log(qs)
+  let writer = fs.createWriteStream('studentIfo.json')
+  let string = `Name:${qs.name} Address:${qs.address} Session:${qs.session} Age:${qs.age}`
+  console.log(string)
+  writer.write(JSON.stringify(qs))
+  writer.close()
+  res.send(string)
 })
     
 //5. Save this information received in #4  to a file named studentIfo using fs module async way
