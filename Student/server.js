@@ -1,7 +1,7 @@
-import * as fs from 'node:fs'
+const fs = require('fs')
 const express = require('express')
-const app=express()
-app.get('/student',(req,res)=>{ //localhost:3000/student?name=Bryan&session=MERN&address=Earth&age=211
+const getStudentDetails=express()
+getStudentDetails.get('/student',(req,res)=>{ //localhost:3000/student?name=Bryan&session=MERN&address=Earth&age=211
     let qs = req.query // is JSON I think?
     console.log(qs)
     let writer = fs.createWriteStream('studentIfo.json')
@@ -11,4 +11,5 @@ app.get('/student',(req,res)=>{ //localhost:3000/student?name=Bryan&session=MERN
     writer.close()
     res.send(string)
   })
-app.listen(3000)
+getStudentDetails.listen(4000)
+console.log("API is ruuning at http://localhost:4000")
