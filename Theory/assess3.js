@@ -39,6 +39,7 @@ getStudentDetails.get('/student',(req,res)=>{
 // see Student folder 
 
 //6. Create a setup for webpack
+// see React-assess/webpack.config.js
 /*
    like for express create a directoty to contain the react app and the usual npm init
    then after installing appropriate dependenices create the webpack.config.js 

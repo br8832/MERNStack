@@ -1,3 +1,4 @@
+//#6
 let path = require("path"), //path module of node framework
 HtmlWebpackPlugin = require('html-webpack-plugin')
 
