@@ -16,7 +16,7 @@ export default class Test extends React.Component{
         return (
         <>
         <button onClick={()=>{this.props.getChildData(this.state.value);this.setState({show:!this.state.show})}}>Pass To Parent</button>
-        <input onChange={(_)=>this.setState({value:e.target.value})} style={{display:'block',width:'50%'}} type='text' placeholder="Pass the text for child compnent to pass"></input>
+        <input onChange={(e)=>this.setState({value:e.target.value})} style={{display:'block',width:'50%'}} type='text' placeholder="Pass the text for child compnent to pass"></input>
         <div class="box test" style={{display: this.state.show ? 'flex' : 'none' }}>  
         <div class="box-item test">
             <h2>Shopping Cart Application from {this.props.parent}</h2>

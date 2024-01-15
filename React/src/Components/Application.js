@@ -1,8 +1,10 @@
 import React from "react";
-import Bryan from "./Bryan"
+import BryanContainer from "./App/BryanContainer";
 import Header from "./Header";
+import About from "./About"
 import Test from "./Test";
-import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom"
+import Assess from "./Assess";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import NotFound from "./NotFound";
 class Application extends React.Component{
     constructor(props){
@@ -20,13 +22,16 @@ class Application extends React.Component{
         })
     }
     render(){
+        
     return(
         <Router>
-            <Header parent={this.state.parent} username={this.state.username}/>
+            <Header parent={this.state.parent}/>
             <Routes>
-                <Route path="/bryan" element={<Bryan username={this.state.username}/>}/>
+                <Route path="/assess" element={<Assess/>}/>  
+                <Route path="/bryan" element={<BryanContainer/>}/>
+                <Route path="/about" element={<About username={this.state.username}/>}/>
                 <Route path="/test" element={<Test username={this.state.username} parent={this.state.parent} getChildData={this.getChildData}/>}></Route>
-                <Route path="*" element={<NotFound/>}/>
+                <Route path="*" element={<NotFound username={this.state.username} parent={this.state.parent}/>}/>
             </Routes>
         </Router>
     )}
