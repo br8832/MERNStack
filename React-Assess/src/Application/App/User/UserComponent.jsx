@@ -8,6 +8,8 @@ export default class User extends React.PureComponent{
             street:props.user.street, 
             mobile:props.user.mobile
         }
+        // #6
+        this.string = React.createRef()
     }
     onTextChange = (evt)=>{
         let target = evt.target;
@@ -40,7 +42,13 @@ export default class User extends React.PureComponent{
         this.props.LoginUser(this.state)
         evt.preventDefault()
     }
-
+    // #6 uncontrolled
+    update = (e) =>{
+        const val = this.string.current.value  
+        this.setState({string:val}) 
+        console.log(this.state.string)
+        e.preventDefault() 
+    }
     render(){
         return(
             <>
@@ -78,6 +86,13 @@ export default class User extends React.PureComponent{
                                     
                         </div>
                 </section>
+            
+                <div className="col-md-12">
+                                    <b>String: {this.state.string} </b>
+                                    <input type="number" className="form-control col-md-6 mobile" 
+                                    placeholder="Mobile" maxLength="11" ref={this.string}
+                                    onChange={this.update} />
+                                </div>
             </>
         )
     }

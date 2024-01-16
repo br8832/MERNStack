@@ -13,6 +13,8 @@ let HeaderComponent = (props)=>{
              
             <div>
                 <NavLink to="/home" className="button" activeclassname="success" >Home </NavLink>
+                <NavLink to="/success" className="button" activeclassname="success" >Success </NavLink>
+                <NavLink to="/lifecycle" className="button" activeclassname="success" >lifecycle </NavLink>
                 <NavLink to="/user" className="button" activeclassname="success" >Login </NavLink>
                 <NavLink to="/student" className="button" activeclassname="success" >Student </NavLink>
                 <NavLink to="/about" className="button" activeclassname="success" >About </NavLink>

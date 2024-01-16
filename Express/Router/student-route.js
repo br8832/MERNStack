@@ -13,7 +13,7 @@ studentRoute.post("/api/signinup",(req,res)=>{
             let studentToAdd = new studentModel(student)
             studentToAdd.save().then((newStudent)=>res.send(newStudent)).catch((err)=>res.send("error"))
         }
-    }).catch((_)=>{console.log("Error while signing in")})
+    }).catch((err)=>{console.log(err);console.log("Error while signing in")})
 })
 studentRoute.get("/api/getuser",(req, res)=>{
     studentModel.find()

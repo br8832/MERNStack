@@ -1,11 +1,11 @@
 // model allows us to map with to mongodb using mongoose
 // create connection with mongodb client, 
-let mongooseObj = require("mongoose");
-schemaObj = mongooseObj.Schema; //using the schema class from mongoose
+// let mongooseObj = require("mongoose");
+// schemaObj = mongooseObj.Schema; //using the schema class from mongoose
 
-mongooseObj.createConnection("mongodb://127.0.0.1/mernstack17")
+//mongooseObj.createConnection("mongodb://localhost:27017")
 //creates db with name mernstack16 or opens a connection if already present
-// mongooseObj.connect("mongodb://localhost:27017/mernstack17"); 
+const mongooseObj = require("./connection")
 
 let userSchema = new schemaObj({
     userName : {type: String, required : true},

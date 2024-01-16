@@ -7,9 +7,12 @@ import Footer from "./Common/Footer";
 import NotFound from "./Common/NotFound";
 import Home from "./Common/Home";
 import About from "./Common/About";
+import Success from "./Common/Success";
 // import UserComponent from "./App/User/UserComponent";
 import User from  "./App/User/UserContainer"
 import Student from "./App/Student/StudentContainer"
+import LifeCycle from "./Common/LifeCycle";
+
 
 export default class ApplicationComponent extends Component {
 
@@ -41,6 +44,8 @@ export default class ApplicationComponent extends Component {
                     <Route path="/user" element={<User/>} />
                     <Route path="/student" element={<Student/>} />
                     <Route path="/about" element={<About/>} />
+                    <Route path="/success" element={<Success/>}/>
+                    <Route path="/lifecycle" element={<LifeCycle/>}></Route>
                     <Route path="*" element={<NotFound/>} />
                 </Routes>
                 <Footer />
