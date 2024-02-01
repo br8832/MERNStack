@@ -8,13 +8,11 @@ const cors = require('cors');
 const userRoute = require("./Router/user-route")
 const userApp = express();
 
-const studentRoute = require("./Router/student-route")
-const studentApp = express()
-// const productRoute = require("./router/product_route")
-// const productApp = express();
+const productRoute = require("./Router/product-route")
+const productApp = express();
 
-// const cartRoute = require("./router/cart_route")
-// const cartApp = express();
+const cartRoute = require("./Router/cart-route")
+const cartApp = express();
 
 console.log("We are in server.js")
 
@@ -27,20 +25,20 @@ app.use('/static', express.static('public')) //localhost:9000/static/alert.js
 app.use(express.json({limit:'2mb', extended:false})); 
 
 
-// app.use('/user',userApp) //localhost:9000/user/api/signinup
-// userApp.use('/',userRoute)
-app.use('/student',studentApp)
-studentApp.use('/',studentRoute)
+app.use('/user',userApp) //localhost:9000/user/api/signinup
+userApp.use('/',userRoute)
+//app.use('/student',studentApp)  //localhost:9000/student/api/signinup
+//studentApp.use('/',studentRoute)
 
-// app.use('/product',productApp)
-// productApp.use('/', productRoute)
+app.use('/product',productApp)
+productApp.use('/', productRoute)
 
-// app.use('/cart',cartApp)
-// cartApp.use('/', cartRoute)
+app.use('/cart',cartApp)
+cartApp.use('/', cartRoute)
 
 //wild card operator / default api
 app.get('*',(req, res)=>{
-  res.send('<h2>API you"re looking for is not ready yet!!! <h2>')
+  res.send("<h2>API you're looking for is not ready yet!!! <h2>")
 })
 console.log("We are listening at 9000")
 

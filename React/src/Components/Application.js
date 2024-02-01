@@ -1,5 +1,6 @@
 import React from "react";
 import BryanContainer from "./App/BryanContainer";
+import BryanHook from "./App/BryanHook";
 import Header from "./Header";
 import About from "./About"
 import Test from "./Test";
@@ -29,6 +30,7 @@ class Application extends React.Component{
             <Routes>
                 <Route path="/assess" element={<Assess/>}/>  
                 <Route path="/bryan" element={<BryanContainer/>}/>
+                <Route path="/bryanhook" element={<BryanHook/>}/>
                 <Route path="/about" element={<About username={this.state.username}/>}/>
                 <Route path="/test" element={<Test username={this.state.username} parent={this.state.parent} getChildData={this.getChildData}/>}></Route>
                 <Route path="*" element={<NotFound username={this.state.username} parent={this.state.parent}/>}/>

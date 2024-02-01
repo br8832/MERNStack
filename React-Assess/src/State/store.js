@@ -19,12 +19,18 @@ import thunk from "redux-thunk"; //is used to pipeline the dispatched objects an
 
 import UserReducer from "./User/userReducer";
 import StudentReducer from "./Student/studentReducer";
+import ProductReducer from "./Product/productReducer";
+import CartReducer from "./Cart/cartReducer";
+import CouponReducer from "./Coupon/couponReducer";
 //import productReducer from "./Product/productReducer";
 //import cartReducer from "./Cart/cartReducer";
 //combine reducer is used to combine all the reducers we need in our store/state
 const rootReducer = combineReducers({
     UserReducer,//state.userReducrer.User.userName
-    StudentReducer// state.StudentReducer.Student.*
+    StudentReducer,// state.StudentReducer.Student.*
+    ProductReducer, // state.ProductReducer.product
+    CartReducer, //state.ProductReducer == is itself the array
+    CouponReducer, //state.CoupondReducer == the numberic value itsel
 })
 
 //create configure and export the store from this code

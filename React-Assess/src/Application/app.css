@@ -238,6 +238,7 @@ button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
+  appearance: button;
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
@@ -379,8 +380,8 @@ optgroup {
   font-size: x-large;
 }
 .loadimage{
-  /* background: url("https://www.synergisticit.com/wp-content/themes/synergisticit/images/hm_pic4.jpg") right no-repeat; */
-  /*background: url('./images/hm_pic4.jpg') right no-repeat;*/
+  /*background: url("https://www.google.com/search?q=es+pan+de+otro+durum&tbm=isch&ved=2ahUKEwiVtfPn-fODAxWZKEQIHVEVAIYQ2-cCegQIABAA&oq=es+pan+de+otro+durum&gs_lcp=CgNpbWcQAzoECCMQJzoFCAAQgAQ6DggAEIAEEIoFELEDEIMBOggIABCABBCxAzoECAAQAzoKCAAQgAQQigUQQzoECAAQHjoGCAAQBRAeOgYIABAIEB5QlwtYhyhgyiloAXAAeACAAVOIAe4KkgECMjKYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=JOyvZZWTEpnRkPIP0aqAsAg&bih=686&biw=1438#imgrc=jYgLKk1bzdwHJM") right no-repeat; */
+  background: url(https://us-tuna-sounds-images.voicemod.net/dfe00298-0efe-4ccb-a1c4-8b456326ccb2-1659033930989.jpg) right no-repeat;
   background-repeat: no-repeat;
   background-position: right;
   height: 450px;

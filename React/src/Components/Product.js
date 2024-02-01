@@ -59,8 +59,7 @@ let Product = (props)=>
 
             <input type="button" className={"btn btn-primary col-md-2 saveUser"} 
                     value={"SignIn-Up"} onClick={save}
-                   />
-                    
+                   />      
         </div>
 </section>)
 }

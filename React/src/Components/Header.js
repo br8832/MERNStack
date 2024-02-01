@@ -17,6 +17,7 @@ class Header extends React.Component{
          
         <div>
             <NavLink to="/bryan" className="button" activeclassname="success" >Bryan </NavLink>
+            <NavLink to="/bryanhook" className="button" activeclassname="success" >Bryan-Hook </NavLink>
             <NavLink to="/assess" className="button" activeclassname="success" >Assess </NavLink>
             <NavLink to="/test" className="button" activeclassname="success" >Testing Features </NavLink>
             <NavLink to="/about" className="button" activeclassname="success" >About </NavLink>

@@ -4,24 +4,29 @@ import { connect } from "react-redux";
 
 let HeaderComponent = (props)=>{
     console.log("Rendering the header component")
-    let userName = props.user.userName ? props.user.userName : "No User Initialized";
-
+    console.log(props.user)
+    let userName = props.user.userName ? props.user.userName : "";
+    let toggle = Boolean(userName)
     return(
         <>
-             Hi <b>{userName +", "}</b> Welcome to SynergisticIT Shopping Cart 
+             {userName?<> Hi <b>{userName +", "}</b></>: "" }Welcome to SynergisticIT Shopping Cart
             {userName == "" ?<b> Please Login to see other features</b>:""}
              
             <div>
-                <NavLink to="/home" className="button" activeclassname="success" >Home </NavLink>
-                <NavLink to="/success" className="button" activeclassname="success" >Success </NavLink>
-                <NavLink to="/lifecycle" className="button" activeclassname="success" >lifecycle </NavLink>
+                <NavLink to="/" className="button" activeclassname="success" >Home </NavLink>
                 <NavLink to="/user" className="button" activeclassname="success" >Login </NavLink>
-                <NavLink to="/student" className="button" activeclassname="success" >Student </NavLink>
+                <NavLink to="/coupon" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Coupon </NavLink>
+                <NavLink to="/cart" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Cart </NavLink>
+                <NavLink to="/product" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Product </NavLink>
                 <NavLink to="/about" className="button" activeclassname="success" >About </NavLink>
             </div>            
         </>
     )
 }
+//<NavLink to="/success" className="button" activeclassname="success" >Success </NavLink>
+//<NavLink to="/lifecycle" className="button" activeclassname="success" >lifecycle </NavLink>
+//<NavLink to="/user" className="button" activeclassname="success" >Login </NavLink>
+//<NavLink to="/student" className="button" activeclassname="success" >Student </NavLink>
 
 //when we want component to become subscriber must implement - mapStoreToProps
 let mapStateToProps = (state)=>{ //state - store object from configure store in store.js
