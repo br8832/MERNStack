@@ -6,8 +6,8 @@ export const AddOrderToStore = (order) =>{
 export const RemoveOrder = (order) =>{
     return {type:ActionTypes.RemoveOrder, payload:order}
 }
-export const UpdateOrder = (id) =>{
-    return {type:ActionTypes.UpdateOrder, payload:{id}}
+export const UpdateOrder = (id,status) =>{
+    return {type:ActionTypes.UpdateOrder, payload:{id,status}}
 }
 
 export const saveOrderToDb = (id, cart, date=new Date(), status="pending") =>{
@@ -39,8 +39,39 @@ export const CancelOrder = (id) =>{
             then((o)=>
             {
                 console.log("Successfully canceled",o)
-                dispatch(UpdateOrder(id))
+                dispatch(UpdateOrder(id,"cancelled"))
             }).
             catch((e)=>console.log("error while canceled", e))
     }
+}
+export const BuyOrderAgain = (id) =>{
+    return function(dispatch){
+        console.log("In BuyAgain", id)
+        axios.post("http://localhost:9000/order/recent/update",{id:id}).
+            then((o)=>{console.log("Successfully update",o)}).
+            catch((e)=>console.log("error while canceled", e))
+    }
+}
+export const AdminUpdateStatus = () =>{
+return function (dispatch){
+    axios.get("http://localhost:9000/order/recent/get?=''").
+    then((orders)=>{
+        for(const order of orders.data){
+            switch (order.status){
+                case "cancelled":
+                case "fufilled":
+                    continue
+                default:
+                    let newStatus = Date.now()-new Date(order.dateCreated).getTime()<172800000;
+                    if(newStatus>172800000)
+                        axios.post("http://localhost:9000/order/update",order)
+                    .then((res)=>{console.log(res)})
+                    .catch((e)=>console.log("error in updating",e))
+                    dispatch(UpdateOrder(order._id,"fufilled"))
+            }
+            
+        }
+    })
+}
+
 }

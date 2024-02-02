@@ -1,13 +1,20 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { CancelOrder } from '../../../State/Order/orderAction'
+import { BuyOrderAgain, CancelOrder} from '../../../State/Order/orderAction'
+import { addItemToCart } from '../../../State/Cart/cartAction'
 let OrderItem = (props)=>{
     let order=useSelector((state)=>state.OrderReducer.filter((o)=>o.status!="cancelled")[props.index])
     let {amount,count} = props.data
     let dispatch = useDispatch()
+    let buyAgain = (order)=>{
+        for(const product of order.cart){
+            dispatch(addItemToCart(product))
+        }
+        dispatch(BuyOrderAgain(order._id))
+    }
     let cancel = (order) =>{
         let condition = Date.now()-new Date(order.dateCreated).getTime()<172800000;//2*24*60*60*1000
-        console.log(condition, order)
+        //console.log(condition, order)
         if(condition)
         {//cancel it
             dispatch(CancelOrder(order._id)) 
@@ -42,7 +49,8 @@ let OrderItem = (props)=>{
         <p> Products Count: {count} </p>
         {//need to check
         }
-        <button onClick={()=>cancel(order)}>Cancel Order</button>
+        {props.parent=="Recent"?<button onClick={()=>cancel(order)}>Cancel Order</button>:<><p>Buy Again, I'll even give you a coupong on the house</p><button onClick={()=>buyAgain(order)}>Buy Again</button></>}
+        <button>Reorder</button>
     </section>)
 }
 export default OrderItem

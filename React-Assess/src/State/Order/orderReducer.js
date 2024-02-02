@@ -9,7 +9,7 @@ let OrderReducer =(state=[], action)=>{
             return state.filter((o)=>o._id!=action.payload.id)
         case ActionTypes.UpdateOrder:
             return state.map((o)=>{
-                if(o._id==action.payload.id) {return Object.assign(o,{status:"cancelled"})}
+                if(o._id==action.payload.id) {return Object.assign(o,action.status)}
                     return o
             })
         default:

@@ -2,9 +2,11 @@ import React, {useEffect, useRef} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {saveProductToDb} from "../../../State/Product/productAction"
 import DisplayProduct from './DisplayProducts'
+import { AdminUpdateStatus } from '../../../State/Order/orderAction'
 let ProductHook = () =>{
     let product = useSelector((state)=>state.ProductReducer.product)
     let user = useSelector((state)=>state.UserReducer.User)
+
     let dispatch = useDispatch()
     let isAdmin = user.userName=="admin"
     let name = useRef({}), price=useRef({}), desc = useRef({}), rating=useRef({})
@@ -26,6 +28,8 @@ let ProductHook = () =>{
     }
 
     return (
+        <>
+        <button style={{position:"absolute",right:"0"}} onClick={(e)=>{AdminUpdateStatus();e.preventDefault()}}></button>
     <section className={"componentClass"}>
     <h1>Product name for reference is: {name.current ? name.current.value : ""}</h1>
 {isAdmin?<div className="form col-md-8 productDetails">
@@ -58,7 +62,7 @@ let ProductHook = () =>{
         </div>:""}
         <DisplayProduct/>
         </section>
-        
+        </>
          
         )
 }

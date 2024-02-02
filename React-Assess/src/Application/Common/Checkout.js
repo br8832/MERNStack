@@ -1,5 +1,4 @@
 import React, { useState, Fragment } from 'react';
-import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 import CartItem from '../App/Cart/CartItem';
 import CartSummary from '../App/Cart/CartSummary';
