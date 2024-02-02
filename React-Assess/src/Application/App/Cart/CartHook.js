@@ -8,9 +8,9 @@ import { saveCartToDb } from "../../../State/Cart/cartAction";
 let CartHook = (props)=> {
 
     let cartList = useSelector((state)=>state.CartReducer)//reading cart data from store
-console.log(cartList)
+//console.log(cartList)
     let user = useSelector((state)=>state.UserReducer.User)
-    console.log(user)
+    //console.log(user)
     let recalculate = (cartItems)=>{
         let amount = 0, 
             count = 0;

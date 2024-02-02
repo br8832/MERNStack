@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { saveUserToDb } from "../../State/User/userAction";
 
-let HeaderComponent = (props)=>{
-    console.log("Rendering the header component")
-    console.log(props.user)
-    let userName = props.user.userName ? props.user.userName : "";
+let HeaderComponent = (_)=>{
+    let initialize = false
+    let dispatch = useDispatch()
+    let user = useSelector((state)=>state.UserReducer.User)
+    useEffect(()=>{
+        if(!initialize && (user.userName=="admin"||user.userName=="Bryan")){ 
+            dispatch(saveUserToDb(user))
+            initialize=true
+        }
+    },[])
+    let userName = user.userName ? user.userName : "";
     let toggle = Boolean(userName)
     return(
         <>
@@ -17,6 +25,7 @@ let HeaderComponent = (props)=>{
                 <NavLink to="/user" className="button" activeclassname="success" >Login </NavLink>
                 <NavLink to="/coupon" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Coupon </NavLink>
                 <NavLink to="/cart" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Cart </NavLink>
+                <NavLink to="/recent" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Recent </NavLink>
                 <NavLink to="/product" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Product </NavLink>
                 <NavLink to="/about" className="button" activeclassname="success" >About </NavLink>
             </div>            
@@ -39,7 +48,7 @@ let mapStateToProps = (state)=>{ //state - store object from configure store in 
 //let mapDispatchToProps;
 
 
-export default connect(mapStateToProps, null)(HeaderComponent);
+export default HeaderComponent;
 
             {/* <div>
                 <h3>{props.header}</h3>

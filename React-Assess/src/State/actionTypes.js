@@ -12,3 +12,7 @@ export const UPDATE_ITEM = "CART.UPDATE_ITEM";
 export const EMPTY_CART = "CART.EMPTY_CART";
 
 export const AddCoupon = "COUPON.ADD";
+
+export const AddOrder = "ORDER.ADD";
+export const RemoveOrder ="ORDER.REMOVE";
+export const UpdateOrder = "ORDER.UPDATE";

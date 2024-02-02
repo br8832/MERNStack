@@ -14,6 +14,9 @@ const productApp = express();
 const cartRoute = require("./Router/cart-route")
 const cartApp = express();
 
+const orderRoute = require("./Router/order-route")
+const orderApp = express();
+
 console.log("We are in server.js")
 
 app.use(cors());//middleware to expose api for other users as public
@@ -36,6 +39,10 @@ productApp.use('/', productRoute)
 app.use('/cart',cartApp)
 cartApp.use('/', cartRoute)
 
+app.use("/order",orderApp)
+orderApp.use("/",orderRoute)
+
+app.use
 //wild card operator / default api
 app.get('*',(req, res)=>{
   res.send("<h2>API you're looking for is not ready yet!!! <h2>")

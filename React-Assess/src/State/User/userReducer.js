@@ -1,8 +1,11 @@
 import * as ActionTypes from "../actionTypes"
 // reducers - intitialize state
 // makes testing as admin easier
+// const INITIAL_STATE = {User:{
+//     userName:"admin", password:"root", street:"Cali", mobile:1234567890
+// }}
 const INITIAL_STATE = {User:{
-    userName:"admin", password:"root", street:"Cali", mobile:1234567890
+    userName:"Bryan", password:"123", street:"Earth", mobile:1231231234
 }}
 
 // updat states

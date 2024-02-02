@@ -58,10 +58,10 @@ export const getUserCart = (id) => {
         axios.post("http://localhost:9000/cart/api/getCart",{id})
         .then((usercart)=>{
             const cart = usercart.data
-            console.log("user cart got",cart)
+            //console.log("user cart got",cart)
             dispatch(emptyTheCart())
             for (const item of cart.cart) {
-                        console.log("item in for of", item);
+                        //console.log("item in for of", item);
                         dispatch(addItemToCart(item));    
                     }    
         }).catch((err)=>{

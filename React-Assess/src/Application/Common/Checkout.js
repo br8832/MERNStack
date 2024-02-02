@@ -1,7 +1,9 @@
 import React, { useState, Fragment } from 'react';
-import { useSelector } from 'react-redux';
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
 import CartItem from '../App/Cart/CartItem';
 import CartSummary from '../App/Cart/CartSummary';
+import { saveOrderToDb } from '../../State/Order/orderAction';
 let recalculate = (cartItems)=>{
     let amount = 0, 
         count = 0;
@@ -16,10 +18,22 @@ let recalculate = (cartItems)=>{
         count 
     }
 }
+
 let Checkout = (props) =>
 {
+    let dispatch = useDispatch();
+    let payment  = ()=>{
+        toggleMessage(false)
+        console.log(cart,user)
+        dispatch(saveOrderToDb(user._id,cart))
+        // axios.post("http://localhost:9000/order/recent/save", {userid:user._id,cart:cart,dateCreated:new Date()}).
+        // then((order)=>console.log(order)).
+        // catch((e)=>console.log("error in saving", e))
+    
+    }
     let cart = useSelector((state)=>state.CartReducer)
     let user = useSelector((state)=>state.UserReducer.User)
+
     let [message,toggleMessage] = useState(true)
     return(
         <>
@@ -57,7 +71,7 @@ let Checkout = (props) =>
                 </tbody>
                 </table>
                 <CartSummary data={recalculate(cart)} readOnly={props.readOnly} />
-                <button onClick={()=>toggleMessage(false)}>Proceed to Payment</button>
+                <button onClick={payment}>Proceed to Payment</button>
             </>
             : 
             <h2>Error please go back</h2>

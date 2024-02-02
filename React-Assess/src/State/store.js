@@ -22,6 +22,7 @@ import StudentReducer from "./Student/studentReducer";
 import ProductReducer from "./Product/productReducer";
 import CartReducer from "./Cart/cartReducer";
 import CouponReducer from "./Coupon/couponReducer";
+import OrderReducer from "./Order/orderReducer";
 //import productReducer from "./Product/productReducer";
 //import cartReducer from "./Cart/cartReducer";
 //combine reducer is used to combine all the reducers we need in our store/state
@@ -29,8 +30,9 @@ const rootReducer = combineReducers({
     UserReducer,//state.userReducrer.User.userName
     StudentReducer,// state.StudentReducer.Student.*
     ProductReducer, // state.ProductReducer.product
-    CartReducer, //state.ProductReducer == is itself the array
+    CartReducer, //state.CartReducer == is itself the array
     CouponReducer, //state.CoupondReducer == the numberic value itsel
+    OrderReducer //state.OrderReducer == an array of carts
 })
 
 //create configure and export the store from this code

@@ -1,5 +1,6 @@
 // define actions to be used by action create and dispatchers to dispatch to store
 import { getUserCart } from "../Cart/cartAction";
+import { getOrders } from "../Order/orderAction";
 import * as ActionTypes from "../actionTypes"
 import axios from "axios";
 
@@ -26,6 +27,7 @@ export const saveUserToDb = (user)=>{
                 console.log(signdUser)
                 dispatch(AddUserToStore(signdUser))
                 dispatch(getUserCart(signdUser._id))
+                dispatch(getOrders(signdUser._id))
             })
             .catch((err)=>{
                 console.log(err)
