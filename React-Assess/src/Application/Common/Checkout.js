@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CartItem from '../App/Cart/CartItem';
 import CartSummary from '../App/Cart/CartSummary';
 import { saveOrderToDb } from '../../State/Order/orderAction';
+import { UpdateCoupon } from '../../State/Coupon/couponAction';
 let recalculate = (cartItems)=>{
     let amount = 0, 
         count = 0;
@@ -20,11 +21,13 @@ let recalculate = (cartItems)=>{
 
 let Checkout = (props) =>
 {
+    let coupon = useSelector((state)=>state.CouponReducer)
     let dispatch = useDispatch();
     let payment  = ()=>{
         toggleMessage(false)
         console.log(cart,user)
-        dispatch(saveOrderToDb(user._id,cart))
+        dispatch(saveOrderToDb(user._id,cart,coupon))
+        if(coupon!=0) dispatch(UpdateCoupon(0))
         // axios.post("http://localhost:9000/order/recent/save", {userid:user._id,cart:cart,dateCreated:new Date()}).
         // then((order)=>console.log(order)).
         // catch((e)=>console.log("error in saving", e))
@@ -39,6 +42,7 @@ let Checkout = (props) =>
         <h1>{message?"Checkout":"Payment"} Page</h1>
         {message?<>
         <p>Delivering to {user.userName} at Address: {user.street}</p>
+        <p>{coupon==0?"":'Hey you got a coupon worth'+coupon+'dollars!!!'}</p>
         <>
         {
             cart && cart.length >= 1 ? 

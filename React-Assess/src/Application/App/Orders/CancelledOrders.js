@@ -16,7 +16,7 @@ export default function CancelledOrders (props) {
         return {amount,count}
     }
     return(<>
-        {cancelledOrders.length>0? <h1>{user.userName}'s Canceleed orders:</h1>:<h1>No Cancelled Orders</h1>}
+        {cancelledOrders.length>0? <h1>{user.userName}'s Cancelled orders:</h1>:<h1>No Cancelled Orders</h1>}
         {cancelledOrders.sort((o1,o2)=>{return new Date(o1.dateCreated).getTime()- new Date(o2.dateCreated).getTime()})
             .map((order,index)=>{return <OrderItem data={calculate(order.cart)} parent="Cancelled" key={order.dateCreated} index={index}/>
         })

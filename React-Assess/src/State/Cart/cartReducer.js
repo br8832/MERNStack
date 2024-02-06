@@ -22,7 +22,7 @@ export default function CartReducer(state = INITIAL_STATE, action)
         case ActionTypes.UPDATE_ITEM:
             return state.map((item)=>{
                 if (item._id == action.payload.id) { 
-                    return {...item, qty:action.payload.qty} 
+                    return {...item, qty:action.payload.qty, coupon:action.payload.coupon} 
                 }
                 return item
             })

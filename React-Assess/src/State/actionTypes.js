@@ -16,3 +16,6 @@ export const AddCoupon = "COUPON.ADD";
 export const AddOrder = "ORDER.ADD";
 export const RemoveOrder ="ORDER.REMOVE";
 export const UpdateOrder = "ORDER.UPDATE";
+
+export const AddReview = "REVIEW.ADD";
+export const UpdateReview = "REVIEW.UPDATE";

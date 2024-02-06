@@ -17,7 +17,9 @@ import UserHook from "./App/User/UserHook";
 import CartHook from "./App/Cart/CartHook";
 import Checkout from "./Common/Checkout";
 import CouponHook from "./App/Coupon/CouponHook";
-import RecentOrders from "./App/RecentOrders/RecentOrders";
+import RecentOrders from "./App/Orders/RecentOrders";
+import Review from "./App/Review/Review";
+import CancelledOrders from "./App/Orders/CancelledOrders";
 
 
 
@@ -50,10 +52,12 @@ export default class ApplicationComponent extends Component {
                     <Route path="/" element={<Home userName={"Jonathan"}/>}/>
                     <Route path="/coupon" element={<CouponHook/>}/>
                     <Route path="/recent" element={<RecentOrders/>}/>
+                    <Route path="/cancel" element={<CancelledOrders/>}/>
                     <Route path="/user" element={<UserHook/>} />
                     <Route path="/checkout" element={<Checkout/>} />
                     <Route path="/cart" element={<CartHook/>} />
                     <Route path="/product" element={<ProductHook/>}/>
+                    <Route path="/review" element={<Review/>}></Route>
                     <Route path="/about" element={<About/>} />
                     <Route path="*" element={<NotFound/>} />
                 </Routes>

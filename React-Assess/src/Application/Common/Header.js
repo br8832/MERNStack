@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { saveUserToDb } from "../../State/User/userAction";
+import { saveUserToDb, AddUserToStore } from "../../State/User/userAction";
 
 let HeaderComponent = (_)=>{
     let initialize = false
@@ -15,17 +15,23 @@ let HeaderComponent = (_)=>{
     },[])
     let userName = user.userName ? user.userName : "";
     let toggle = Boolean(userName)
+    let LogOut = (e) =>{
+        dispatch(AddUserToStore({}))
+        e.preventDefault()
+    }
     return(
         <>
+            <button onClick={LogOut} style={{position:toggle?"absolute":"none",right:0,top:0}}>LogOut</button>
              {userName?<> Hi <b>{userName +", "}</b></>: "" }Welcome to SynergisticIT Shopping Cart
             {userName == "" ?<b> Please Login to see other features</b>:""}
-             
             <div>
                 <NavLink to="/" className="button" activeclassname="success" >Home </NavLink>
                 <NavLink to="/user" className="button" activeclassname="success" >Login </NavLink>
                 <NavLink to="/coupon" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Coupon </NavLink>
                 <NavLink to="/cart" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Cart </NavLink>
                 <NavLink to="/recent" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Recent </NavLink>
+                <NavLink to="/cancel" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Cancelled </NavLink>
+                <NavLink to="/review" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Review </NavLink>
                 <NavLink to="/product" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Product </NavLink>
                 <NavLink to="/about" className="button" activeclassname="success" >About </NavLink>
             </div>            

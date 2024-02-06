@@ -17,6 +17,8 @@ const cartApp = express();
 const orderRoute = require("./Router/order-route")
 const orderApp = express();
 
+const reviewRoute = require("./Router/review-route")
+const reviewApp = express();
 console.log("We are in server.js")
 
 app.use(cors());//middleware to expose api for other users as public
@@ -41,6 +43,9 @@ cartApp.use('/', cartRoute)
 
 app.use("/order",orderApp)
 orderApp.use("/",orderRoute)
+
+app.use("/review",reviewApp)
+reviewApp.use("/",reviewRoute)
 
 app.use
 //wild card operator / default api

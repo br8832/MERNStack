@@ -29,7 +29,7 @@ let ProductHook = () =>{
 
     return (
         <>
-        <button style={{position:"absolute",right:"0"}} onClick={(e)=>{AdminUpdateStatus();e.preventDefault()}}></button>
+        <button style={{position:"absolute",right:"0"}} onClick={(e)=>{dispatch(AdminUpdateStatus());e.preventDefault()}}>Update Orders</button>
     <section className={"componentClass"}>
     <h1>Product name for reference is: {name.current ? name.current.value : ""}</h1>
 {isAdmin?<div className="form col-md-8 productDetails">

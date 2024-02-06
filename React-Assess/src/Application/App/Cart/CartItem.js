@@ -1,12 +1,12 @@
 import React, { useState, Fragment } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeItem, updateItem } from "../../../State/Cart/cartAction";
 
 let CartItem = (props)=>{
     let item = props.item;
 
     let [Quantity, setQuantity] = useState(item.qty)
-
+    let coupon = useSelector((state)=>state.CouponReducer)
     let dispatchItem = useDispatch();
 
     return(

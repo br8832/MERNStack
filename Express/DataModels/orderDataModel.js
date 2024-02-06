@@ -4,7 +4,8 @@ let orderSchema = new schemaObj({
     cart:  {type:[{}], required:true},
     dateCreated: {type: Date, required: true},
     dateCancelled: Date,
-    status: String
+    status: String,
+    coupon: Number
 },{versionKey:false})
 let orderModel = mongooseObj.model("order",orderSchema)
 module.exports = orderModel

@@ -6,6 +6,7 @@ export const addItemToCart = (item)=>({
     payload: {item} 
 })
 
+
 export const emptyTheCart = () => ({
     type: ActionTypes.EMPTY_CART
 });
@@ -19,7 +20,7 @@ export const updateItem = (id, qty) => ({
     type: ActionTypes.UPDATE_ITEM,
     payload: {
         id, 
-        qty: parseInt(qty) 
+        qty: parseInt(qty),
     }
 });
 

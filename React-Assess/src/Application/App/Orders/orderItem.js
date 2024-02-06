@@ -1,16 +1,27 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux'
-import { BuyOrderAgain, CancelOrder} from '../../../State/Order/orderAction'
-import { addItemToCart } from '../../../State/Cart/cartAction'
+import { CancelOrder } from '../../../State/Order/orderAction'
+import { addItemToCart, emptyTheCart } from '../../../State/Cart/cartAction'
+import { UpdateCoupon } from '../../../State/Coupon/couponAction';
 let OrderItem = (props)=>{
+    let nav = useNavigate()
     let order=useSelector((state)=>state.OrderReducer.filter((o)=>o.status!="cancelled")[props.index])
     let {amount,count} = props.data
     let dispatch = useDispatch()
-    let buyAgain = (order)=>{
+    let buyAgain = (e,order)=>{
+        let discount = Math.floor(100000 + Math.random() * 900000)
+        dispatch(emptyTheCart())
         for(const product of order.cart){
             dispatch(addItemToCart(product))
         }
-        dispatch(BuyOrderAgain(order._id))
+        switch(e.target.id){
+            case "recent":
+               discount=0
+            default: 
+                dispatch(UpdateCoupon(discount))
+        }
+        nav("/cart")
     }
     let cancel = (order) =>{
         let condition = Date.now()-new Date(order.dateCreated).getTime()<172800000;//2*24*60*60*1000
@@ -49,8 +60,9 @@ let OrderItem = (props)=>{
         <p> Products Count: {count} </p>
         {//need to check
         }
-        {props.parent=="Recent"?<button onClick={()=>cancel(order)}>Cancel Order</button>:<><p>Buy Again, I'll even give you a coupong on the house</p><button onClick={()=>buyAgain(order)}>Buy Again</button></>}
-        <button>Reorder</button>
+        {props.parent=="Recent"?<><button onClick={()=>cancel(order)}>Cancel Order</button>
+        <button id="recent" onClick={()=>buyAgain(order)}>Reorder</button></>:<><p>Buy Again, I'll even give you a coupon on the house</p><button id="cancelled" onClick={()=>buyAgain(order)}>Reorder</button></>}
+        
     </section>)
 }
 export default OrderItem
