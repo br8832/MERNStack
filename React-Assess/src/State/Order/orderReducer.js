@@ -1,7 +1,7 @@
 //Order reducer is an array of carts purchased
 import * as ActionTypes from "../actionTypes"
 let OrderReducer =(state=[], action)=>{
-    console.log(state,action)
+    //console.log(state,action)
     switch (action.type) {
         case ActionTypes.AddOrder:
             return [...state, action.payload]

@@ -13,9 +13,7 @@ export const UpdateOrder = (id,status) =>{
 export const saveOrderToDb = (id, cart, coupon=0, date=new Date(), status="pending",) =>{
     return function(dispatch){
         axios.post("http://localhost:9000/order/recent/save", {userid:id,cart:cart,dateCreated:date,status:status, coupon:coupon}).
-        then((order)=>{
-            console.log(order)}
-            ).
+        then((order)=>{dispatch(AddOrderToStore(order.data))}).
         catch((e)=>console.log("error in saving", e))
     }
 }
@@ -41,6 +39,7 @@ export const CancelOrder = (id) =>{
             {
                 console.log("Successfully canceled",o)
                 dispatch(UpdateOrder(id,"cancelled"))
+                dispatch(AddOrderToStore(o.data))
             }).
             catch((e)=>console.log("error while canceled", e))
     }

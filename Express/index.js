@@ -47,7 +47,6 @@ orderApp.use("/",orderRoute)
 app.use("/review",reviewApp)
 reviewApp.use("/",reviewRoute)
 
-app.use
 //wild card operator / default api
 app.get('*',(req, res)=>{
   res.send("<h2>API you're looking for is not ready yet!!! <h2>")

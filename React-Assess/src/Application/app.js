@@ -20,6 +20,7 @@ import CouponHook from "./App/Coupon/CouponHook";
 import RecentOrders from "./App/Orders/RecentOrders";
 import Review from "./App/Review/Review";
 import CancelledOrders from "./App/Orders/CancelledOrders";
+import ViewReviews from "./App/Review/ViewReviews";
 
 
 
@@ -50,6 +51,7 @@ export default class ApplicationComponent extends Component {
                 <HeaderComponent header={this.state.header} name={this.state.name} getChildData={this.getChildData}/>
                 <Routes>
                     <Route path="/" element={<Home userName={"Jonathan"}/>}/>
+                    <Route path="/viewreviews" element={<ViewReviews/>}/>
                     <Route path="/coupon" element={<CouponHook/>}/>
                     <Route path="/recent" element={<RecentOrders/>}/>
                     <Route path="/cancel" element={<CancelledOrders/>}/>

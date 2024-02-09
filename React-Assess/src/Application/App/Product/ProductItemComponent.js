@@ -1,21 +1,19 @@
 import React, { useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { addItemToCart } from "../../../State/Cart/cartAction";
+import { useNavigate } from "react-router-dom";
 
 
 let ProductItemComponent = ({product})=>{
-    let nav = useNavigate()
+    let hasReviews = useSelector((state) => state.ReviewReducer.some((r)=>product._id==r.productid))
+    //console.log(productReviews)
     let [showHide, toggleShowHide] = useState(false)
     let dispatchToAddProduct = useDispatch();
+    let nav=useNavigate()
     let addProductToCart = ( product )=>{
-        
         dispatchToAddProduct(addItemToCart(product))
     }
-    let toReview = (e) =>{
-
-        nav("/review",{state: {_id:product._id}})
-        
-    }
+   let viewReviews = (product)=>(nav("/viewreviews",{state:{product}}))
     return(
         <ul className="product">
             <li className="product" onClick={()=>toggleShowHide(!showHide)}>
@@ -25,7 +23,7 @@ let ProductItemComponent = ({product})=>{
                     <li>{product.price}</li>
                     <li>{product.desc}</li>
                     <li>{product.rating}</li> 
-                    {}<button onClick={toReview}></button>
+                    {hasReviews?<button onClick={()=>{viewReviews(product)}}>View Reviews</button>:""}
                     <button onClick={()=>{addProductToCart(product)}}>Add To Cart</button>
                 </ul>
                 : 

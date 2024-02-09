@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { saveUserToDb, AddUserToStore } from "../../State/User/userAction";
 
@@ -13,15 +13,17 @@ let HeaderComponent = (_)=>{
             initialize=true
         }
     },[])
+    let nav = useNavigate()
     let userName = user.userName ? user.userName : "";
     let toggle = Boolean(userName)
     let LogOut = (e) =>{
         dispatch(AddUserToStore({}))
+        nav("/")
         e.preventDefault()
     }
     return(
         <>
-            <button onClick={LogOut} style={{position:toggle?"absolute":"none",right:0,top:0}}>LogOut</button>
+            <button onClick={LogOut} style={{display:toggle?"revert-layer":"none",position:toggle?"absolute":"none",right:0,top:0}}>LogOut</button>
              {userName?<> Hi <b>{userName +", "}</b></>: "" }Welcome to SynergisticIT Shopping Cart
             {userName == "" ?<b> Please Login to see other features</b>:""}
             <div>
@@ -31,7 +33,6 @@ let HeaderComponent = (_)=>{
                 <NavLink to="/cart" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Cart </NavLink>
                 <NavLink to="/recent" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Recent </NavLink>
                 <NavLink to="/cancel" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Cancelled </NavLink>
-                <NavLink to="/review" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Review </NavLink>
                 <NavLink to="/product" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Product </NavLink>
                 <NavLink to="/about" className="button" activeclassname="success" >About </NavLink>
             </div>            
