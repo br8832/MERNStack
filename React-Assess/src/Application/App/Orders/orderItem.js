@@ -4,6 +4,8 @@ import {useDispatch, useSelector} from 'react-redux'
 import { CancelOrder } from '../../../State/Order/orderAction'
 import { addItemToCart, emptyTheCart } from '../../../State/Cart/cartAction'
 import { UpdateCoupon } from '../../../State/Coupon/couponAction';
+import { AddNotification } from '../../../State/Notification/notificationAction';
+
 let OrderItem = (props)=>{
     let nav = useNavigate()
     let reviews = useSelector((state)=>state.ReviewReducer)
@@ -15,6 +17,7 @@ let OrderItem = (props)=>{
     let buyAgain = (e,order)=>{
         let discount = Math.floor(100000 + Math.random() * 900000)
         dispatch(emptyTheCart())
+        console.log(e,order)
         for(const product of order.cart){
             dispatch(addItemToCart(product))
         }
@@ -37,6 +40,7 @@ let OrderItem = (props)=>{
         if(condition)
         {//cancel it
             dispatch(CancelOrder(order._id)) 
+            dispatch(AddNotification(true))
         }
         else{
             alert("I'm sorry to inform you 2 days have passed. Paga hp")
@@ -78,7 +82,7 @@ let OrderItem = (props)=>{
         {//need to check
         }
         {props.parent=="Recent"?<><button style={{display:order.status=='pending'?'':'none'}}onClick={()=>cancel(order)}>Cancel Order</button>
-        <button id="recent" onClick={()=>buyAgain(order)}>Reorder</button></>:<><p>Buy Again, I'll even give you a coupon on the house</p><button id="cancelled" onClick={()=>buyAgain(order)}>Reorder</button></>}
+        <button id="recent" onClick={(e)=>{buyAgain(e,order)}}>Reorder</button></>:<><p>Buy Again, I'll even give you a coupon on the house</p><button id="cancelled" onClick={(e)=>{buyAgain(e,order)}}>Reorder</button></>}
         
     </section>)
 }

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { saveUserToDb, AddUserToStore } from "../../State/User/userAction";
-
+import Notificiation from "../App/Notifications/NotificationSetup";
 let HeaderComponent = (_)=>{
     let initialize = false
     let dispatch = useDispatch()
@@ -23,7 +23,8 @@ let HeaderComponent = (_)=>{
     }
     return(
         <>
-            <button onClick={LogOut} style={{display:toggle?"revert-layer":"none",position:toggle?"absolute":"none",right:0,top:0}}>LogOut</button>
+            <Notificiation></Notificiation>
+           
              {userName?<> Hi <b>{userName +", "}</b></>: "" }Welcome to SynergisticIT Shopping Cart
             {userName == "" ?<b> Please Login to see other features</b>:""}
             <div>
@@ -35,6 +36,7 @@ let HeaderComponent = (_)=>{
                 <NavLink to="/cancel" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Cancelled </NavLink>
                 <NavLink to="/product" style={{display: toggle?"revert-layer":"none"}} className="button" activeclassname="success" >Product </NavLink>
                 <NavLink to="/about" className="button" activeclassname="success" >About </NavLink>
+                <button onClick={LogOut} style={{display:toggle?"revert-layer":"none",right:0,top:0}}>LogOut</button>
             </div>            
         </>
     )

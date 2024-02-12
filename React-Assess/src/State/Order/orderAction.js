@@ -7,6 +7,7 @@ export const RemoveOrder = (order) =>{
     return {type:ActionTypes.RemoveOrder, payload:order}
 }
 export const UpdateOrder = (id,status) =>{
+    console.log("update"+id+status)
     return {type:ActionTypes.UpdateOrder, payload:{id,status}}
 }
 
@@ -23,9 +24,9 @@ export const getOrders = (id) =>{
     axios.get(`http://localhost:9000/order/recent/get?id=${id}`).
     then((orders)=>{
         const payload = orders.data
-        console.log("payload",payload)
+       // console.log("payload",payload)
         for (const order of payload)
-        {   console.log("each order",order)
+        {   //console.log("each order",order)
             dispatch(AddOrderToStore(order))}
     }).catch((e)=>console.log("error in retrieveing", e))
     }
@@ -39,7 +40,6 @@ export const CancelOrder = (id) =>{
             {
                 console.log("Successfully canceled",o)
                 dispatch(UpdateOrder(id,"cancelled"))
-                dispatch(AddOrderToStore(o.data))
             }).
             catch((e)=>console.log("error while canceled", e))
     }

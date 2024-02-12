@@ -42,7 +42,7 @@ let Checkout = (props) =>
         <h1>{message?"Checkout":"Payment"} Page</h1>
         {message?<>
         <p>Delivering to {user.userName} at Address: {user.street}</p>
-        <p>{coupon==0?"":'Hey you got a coupon worth'+coupon+'dollars!!!'}</p>
+        <p>{coupon==0?"":`Hey you got a coupon worth ${coupon} dollars!!!`}</p>
         <>
         {
             cart && cart.length >= 1 ? 

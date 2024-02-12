@@ -15,7 +15,7 @@
 import { combineReducers, applyMiddleware } from "redux";
 import { configureStore } from '@reduxjs/toolkit';
 
-import thunk from "redux-thunk"; //is used to pipeline the dispatched objects and give us a feeling of sync execution by being async
+import {thunk} from "redux-thunk"; //is used to pipeline the dispatched objects and give us a feeling of sync execution by being async
 
 import UserReducer from "./User/userReducer";
 import StudentReducer from "./Student/studentReducer";
@@ -24,6 +24,7 @@ import CartReducer from "./Cart/cartReducer";
 import CouponReducer from "./Coupon/couponReducer";
 import OrderReducer from "./Order/orderReducer";
 import ReviewReducer from "./Review/reviewReducer";
+import NotificationReducer from "./Notification/notificationReducer";
 //import productReducer from "./Product/productReducer";
 //import cartReducer from "./Cart/cartReducer";
 //combine reducer is used to combine all the reducers we need in our store/state
@@ -35,11 +36,14 @@ const rootReducer = combineReducers({
     CouponReducer, //state.CoupondReducer == the numberic value itsel
     OrderReducer, //state.OrderReducer == an array of carts
     ReviewReducer, // state.ReviewReducer === an array of reviews
+    NotificationReducer // state.NotificationReducer === an array of messages for notification
 })
+const middleware = process.env.NODE_ENV !== 'production' ?
+  [require('redux-immutable-state-invariant').default(), thunk] :
+  [thunk];
 
 //create configure and export the store from this code
 export default configureStore(
-    {reducer : rootReducer},
-    {},//inital state if we want to set from store instead of reducer
-    //applyMiddleware(thunk)
+    {reducer : rootReducer},{},
+    applyMiddleware(...middleware)
 )

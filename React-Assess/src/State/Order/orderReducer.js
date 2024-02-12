@@ -9,9 +9,9 @@ let OrderReducer =(state=[], action)=>{
             return state.filter((o)=>o._id!=action.payload.id)
         case ActionTypes.UpdateOrder:
             return state.map((o)=>{
-                console.log(o, action.payload)
-                if(o._id==action.payload.id) {return Object.assign(o,{status:action.payload.status})}
-                else {return o}
+                //console.log(o, action.payload)
+                if(o._id==action.payload.id) {return {...o,status:action.payload.status}}
+                return o
             })
         default:
             return state;

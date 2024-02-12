@@ -19,3 +19,6 @@ export const UpdateOrder = "ORDER.UPDATE";
 
 export const AddReview = "REVIEW.ADD";
 export const UpdateReview = "REVIEW.UPDATE";
+
+export const AddNotification = "NOTIFICATION.UPDATE"
+export const DeleteNotification = "NOTIFICATION.DELETE"
