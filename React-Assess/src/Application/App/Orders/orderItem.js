@@ -36,7 +36,7 @@ let OrderItem = (props)=>{
     }
     let cancel = (order) =>{
         let condition = Date.now()-new Date(order.dateCreated).getTime()<172800000;//2*24*60*60*1000
-        //console.log(condition, order)
+        console.log(condition, order)
         if(condition)
         {//cancel it
             dispatch(CancelOrder(order._id)) 
@@ -60,7 +60,7 @@ let OrderItem = (props)=>{
             //for now assume 1 ratingmyFunction
             let reviewsByProduct = reviews.filter((r)=>item._id==r.productid)
             let id = `${item._id}${props.index}`
-            //console.log("in each row",reviewsByProduct, item._id)
+            console.log("in each row",reviewsByProduct, item._id)
             return (
             <tbody>
             <tr>

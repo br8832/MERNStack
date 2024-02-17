@@ -4,8 +4,8 @@ import OrderItem from "./orderItem";
 
 export default function RecentOrders (props) {
     let user = useSelector(state=>state.UserReducer.User)
-    let recentOrders = useSelector(state=>state.OrderReducer).filter((o)=>o.status!="cancelled")
-    //console.log(recentOrders)
+    let recentOrders = useSelector(state=>state.OrderReducer).filter((o)=>o.userid==user._id&&o.status!="cancelled")
+    console.log(recentOrders)
     let calculate = (cartItems)=>{
         let amount = 0, 
             count = 0;

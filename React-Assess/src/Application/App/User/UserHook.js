@@ -16,7 +16,7 @@ let UserHook =(props)=>{
     let dispatch = useDispatch()
     let loginUser = (e)=>{
         let user = {
-            userName:uName,
+            userName :uName,
             password: pass,
             street,
             mobile
@@ -43,14 +43,14 @@ let UserHook =(props)=>{
      //default it is shouldcomponentUpdate
      //when first rendering is done and UI can be accessed - componentDidMount
      //useeffect is the hook that we use to make it work as shouldComponentUpdate, componentDidMount, componentWillUnmount
-     useEffect(()=>{
-         console.log("Re render happend")
+    //  useEffect(()=>{
+    //      console.log("Re render happend")
  
-         //assign the values we got from reducer
-         sessionName.current.value = user.userName //"David" 
-         todaysTopic.current.value = user.street
+    //      //assign the values we got from reducer
+    //      sessionName.current.value = user.userName //"David" 
+    //      todaysTopic.current.value = user.street
  
-         }, [sessionName, todaysTopic]) //if we pass value in second parameter it initializes and behaves as - componentDidMount
+    //      }, [sessionName, todaysTopic]) //if we pass value in second parameter it initializes and behaves as - componentDidMount
  
  
    
@@ -86,7 +86,7 @@ let UserHook =(props)=>{
         </div>
     </section>
     {/* uncontrolled way by using ref keyword */}
-    <form className={"form col-md-10 userHook"} onSubmit={readFormData}>                
+    {/* <form className={"form col-md-10 userHook"} onSubmit={readFormData}>                
                 <label>
                     <b>User Name :</b>
                     <input type="text" className={"form-control col-md-12"} ref={sessionName}
@@ -100,7 +100,7 @@ let UserHook =(props)=>{
                     </label>
                     <br/>
                 <input type="submit" className={"btn btn-primary"} value="Signin" />
-            </form> 
+            </form>  */}
     </>)
 
 

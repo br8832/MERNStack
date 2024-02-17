@@ -5,7 +5,8 @@ let ViewReviews = ()=>{
     const location = useLocation();
     let product = location.state.product
     let reviews = useSelector((state) => state.ReviewReducer.filter((r)=>product._id==r.productid))
-    console.log(product)
+    let users;
+    axios.get("http://localhost:9000/user/api/getuser").then((user)=>users=user).catch((e)=>console.log(e))
     return(<>
     <section>
     <h1> Reviews for {product.name} </h1>

@@ -36,6 +36,7 @@ export const saveUserToDb = (user)=>{
             })
      }
 }
+
 export const getUser = (user)=>{
     // thunk - makes it behave synchronously
     return (dispatch)=>{

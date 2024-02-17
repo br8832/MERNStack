@@ -4,7 +4,7 @@ import OrderItem from "./orderItem";
 
 export default function CancelledOrders (props) {
     let user = useSelector(state=>state.UserReducer.User)
-    let cancelledOrders = useSelector(state=>state.OrderReducer).filter((o)=>o.status=="cancelled")
+    let cancelledOrders = useSelector(state=>state.OrderReducer).filter((o)=>o.userid==user._id&&o.status=="cancelled")
     console.log(cancelledOrders)
     let calculate = (cartItems)=>{
         let amount = 0, 
